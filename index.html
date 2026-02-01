@@ -17,201 +17,222 @@
 
 body {
   height: 100vh;
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  background: radial-gradient(circle at top, #ffb3c6, #ff4d6d);
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  text-align: center;
+}
+
+/* Instagram Reel frame */
+.reel {
+  width: 100%;
+  max-width: 430px;
+  aspect-ratio: 9 / 16;
+  background: linear-gradient(180deg, #ff8fab, #ff4d6d);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
-  animation: fadeIn 2s ease forwards;
+  text-align: center;
   padding: 20px;
+  animation: fadeIn 2s ease forwards;
 }
 
+/* 🎂 CAKE */
+.cake {
+  position: relative;
+  width: 220px;
+  margin: 60px auto 20px;
+}
+
+.layer {
+  border-radius: 20px;
+  box-shadow: inset 0 -8px rgba(0,0,0,0.08);
+  margin: auto;
+}
+
+.bottom {
+  width: 220px;
+  height: 80px;
+  background: #f3b6c4;
+}
+
+.middle {
+  width: 180px;
+  height: 70px;
+  background: #ffd6e0;
+  margin-top: -20px;
+}
+
+.top {
+  width: 140px;
+  height: 60px;
+  background: #fff;
+  margin-top: -18px;
+  position: relative;
+}
+
+/* Cream drip */
+.drip {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  height: 20px;
+  background: #fff;
+  border-radius: 0 0 20px 20px;
+}
+
+.drip span {
+  position: absolute;
+  width: 12px;
+  height: 25px;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+  animation: drip 2s infinite alternate;
+}
+
+.drip span:nth-child(1){left:20px}
+.drip span:nth-child(2){left:60px;animation-delay:.4s}
+.drip span:nth-child(3){left:100px;animation-delay:.8s}
+
+/* Candle */
 .candle {
-  display: flex;
-  justify-content: center;
-  margin-bottom: -15px;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 35px;
+  background: repeating-linear-gradient(
+    45deg,
+    #fff,
+    #fff 4px,
+    #ff8fab 4px,
+    #ff8fab 8px
+  );
+  border-radius: 5px;
 }
 
 .flame {
-  width: 10px;
-  height: 25px;
-  margin: 0 4px;
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 18px;
   background: radial-gradient(circle, #fff176, #ff9800, #ff5722);
   border-radius: 50%;
-  animation: flicker 0.2s infinite alternate;
+  animation: flicker .2s infinite alternate;
 }
 
-.cake {
-  width: 200px;
-  margin: 15px auto;
-  animation: float 3s ease-in-out infinite;
-}
-
+/* Text */
 h1 {
-  color: #fff;
+  color: white;
   font-size: 1.8rem;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .subtitle {
-  color: #fff;
-  opacity: 0.9;
-  font-size: 1rem;
+  color: white;
+  opacity: .9;
+  margin-top: 6px;
 }
 
+/* Typewriter */
 .typewriter {
-  overflow: hidden;
   white-space: nowrap;
+  overflow: hidden;
   border-right: 2px solid white;
   width: 0;
-  animation: typing 3s steps(30) forwards, blink 0.8s infinite;
+  animation: typing 3s steps(30) forwards, blink .8s infinite;
 }
 
+/* Button */
 button {
-  margin-top: 20px;
-  padding: 10px 25px;
+  margin-top: 25px;
+  padding: 12px 28px;
+  border-radius: 30px;
   border: none;
-  border-radius: 25px;
-  background: #fff;
-  color: #ff5f8a;
+  background: white;
+  color: #ff4d6d;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
 
-button:hover {
-  transform: scale(1.1);
-}
-
-/* Popup */
-.popup {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-box {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  max-width: 300px;
-  animation: pop 0.4s ease;
-}
-
-/* Confetti */
-#confetti span {
+/* Fireworks */
+.firework {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  animation: fall linear infinite;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: explode 1.5s ease-out infinite;
 }
 
 /* Animations */
-@keyframes typing {
-  to { width: 100%; }
-}
+@keyframes typing { to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+@keyframes flicker { from { transform: translateX(-50%) scale(1); } to { transform: translateX(-50%) scale(1.2); } }
+@keyframes drip { from { height: 18px; } to { height: 26px; } }
+@keyframes fadeIn { from { opacity: 0; transform: scale(.9); } to { opacity: 1; } }
 
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-
-@keyframes flicker {
-  from { transform: scale(1); }
-  to { transform: scale(1.2); }
-}
-
-@keyframes float {
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
-}
-
-@keyframes pop {
-  from { transform: scale(0.5); }
-  to { transform: scale(1); }
-}
-
-@media (max-width: 480px) {
-  h1 { font-size: 1.4rem; }
-  .cake { width: 160px; }
+@keyframes explode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(8); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<div id="confetti"></div>
+<div class="reel" id="reel">
+  <div class="container">
 
-<div class="container">
+    <div class="cake">
+      <div class="top">
+        <div class="drip"><span></span><span></span><span></span></div>
+        <div class="candle"><div class="flame"></div></div>
+      </div>
+      <div class="middle layer"></div>
+      <div class="bottom layer"></div>
+    </div>
 
-  <div class="candle">
-    <div class="flame"></div>
-    <div class="flame"></div>
-    <div class="flame"></div>
-  </div>
+    <h1 class="typewriter">Happy Birthday Aditi 💖</h1>
+    <p class="subtitle">Bestie forever ✨</p>
 
-  <svg class="cake" viewBox="0 0 200 200">
-    <rect x="30" y="80" rx="10" ry="10" width="140" height="60" fill="#f6c1cc"/>
-    <rect x="40" y="50" rx="10" ry="10" width="120" height="40" fill="#ffd6e0"/>
-    <rect x="50" y="30" rx="10" ry="10" width="100" height="30" fill="#fff"/>
-  </svg>
-
-  <h1 class="typewriter">Happy Birthday Aditi 🤍</h1>
-  <p class="subtitle">You make life sweeter 🎂✨</p>
-
-  <button onclick="showPopup()">Tap for Surprise 💌</button>
-</div>
-
-<div class="popup" id="popup">
-  <div class="popup-box">
-    <h3>🎉 Surprise!</h3>
-    <p>You’re not just my bestie,<br>you’re my favorite person 💖<br>Stay amazing forever ✨</p>
-    <button onclick="closePopup()">Close</button>
+    <button onclick="startParty()">▶ Tap to Celebrate</button>
   </div>
 </div>
 
-<audio id="music">
+<audio id="song">
   <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-320.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Confetti
-const confetti = document.getElementById("confetti");
-for (let i = 0; i < 90; i++) {
-  const c = document.createElement("span");
-  c.style.left = Math.random() * 100 + "vw";
-  c.style.animationDuration = Math.random() * 3 + 2 + "s";
-  c.style.backgroundColor = `hsl(${Math.random()*360},100%,70%)`;
-  confetti.appendChild(c);
+const song = document.getElementById("song");
+const reel = document.getElementById("reel");
+
+function startParty() {
+  song.play();
+  setInterval(createFirework, 500);
 }
 
-// Popup + Music
-const music = document.getElementById("music");
+function createFirework() {
+  const fw = document.createElement("div");
+  fw.className = "firework";
+  fw.style.left = Math.random() * 100 + "%";
+  fw.style.top = Math.random() * 60 + "%";
+  fw.style.backgroundColor = `hsl(${Math.random()*360},100%,70%)`;
+  reel.appendChild(fw);
 
-function showPopup() {
-  document.getElementById("popup").style.display = "flex";
-  music.play();
-}
-
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
+  setTimeout(() => fw.remove(), 1500);
 }
 </script>
 
 </body>
 </html>
+
